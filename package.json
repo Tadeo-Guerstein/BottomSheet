@@ -2,7 +2,7 @@
   "name": "react-native-bottom-sheet",
   "version": "1.0.0",
   "description": "BottomSheet created for React Native.",
-  "main": "BottomSheet.jsx",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,3 +22,4 @@
     "react-native-safe-area-context": "^4.9.0"
   }
 }
+
