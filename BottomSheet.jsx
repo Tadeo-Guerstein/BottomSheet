@@ -15,7 +15,6 @@ import {
   StyleSheet,
   View,
 } from "react-native"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 const { height: DEVICE_HEIGHT, width: DEVICE_WIDTH } = Dimensions.get("window")
 
@@ -46,10 +45,10 @@ const BottomSheet = forwardRef(
       enablePanDownToClose,
       style,
       disablePanDownChildren,
+      bottomInsets,
     },
     ref
   ) => {
-    const insets = useSafeAreaInsets()
     const finalValue = useRef(MENU_OFFSET)
 
     useImperativeHandle(
@@ -189,7 +188,7 @@ const BottomSheet = forwardRef(
 
     return (
       <View
-        style={[styles.container, { marginBottom: insets.bottom }]}
+        style={[styles.container, { marginBottom: bottomInsets }]}
         pointerEvents='box-none'
       >
         {renderHandleComponent()}
