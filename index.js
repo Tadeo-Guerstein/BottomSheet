@@ -208,7 +208,7 @@ const BottomSheet = forwardRef(
 )
 BottomSheet.displayName = "BottomSheet"
 
-module.exports = BottomSheet
+module.exports = { BottomSheet }
 
 const styles = StyleSheet.create({
   container: {
