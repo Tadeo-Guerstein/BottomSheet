@@ -41,11 +41,11 @@ const BottomSheet = forwardRef(
       children,
       animation,
       handleComponent,
-      indexStart,
+      indexStart = 0,
       enablePanDownToClose,
       style,
       disablePanDownChildren,
-      bottomInsets,
+      bottomInsets = 0,
     },
     ref
   ) => {
