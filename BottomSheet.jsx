@@ -148,11 +148,18 @@ const BottomSheet = forwardRef(
         finalValue.current = DEVICE_HEIGHT
         return
       }
-      executeAnimationSpring(MENU_OFFSET)
+      if (indexStart === 0) {
+        finalValue.current = MENU_OFFSET
+        executeAnimationSpring(MENU_OFFSET)
+        return
+      }
+      finalValue.current = 0
+      executeAnimationSpring(0)
     }, [])
 
     const renderHandleComponent = () => {
-      const props = enablePanDownToClose ? panResponder.panHandlers : {}
+      const props =
+        enablePanDownToClose || !handleComponent ? panResponder.panHandlers : {}
       if (handleComponent) {
         return (
           <Animated.View
