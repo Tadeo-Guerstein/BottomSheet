@@ -1,5 +1,5 @@
 {
-  "name": "tadeo-guerstein-bottom-sheet",
+  "name": "expo-bottom-sheet",
   "version": "1.0.2",
   "description": "BottomSheet created for React Native.",
   "main": "index.js",
