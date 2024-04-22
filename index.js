@@ -1,3 +1,3 @@
-import BottomSheet from "./BottomSheet"
+import * as BottomSheet from "./BottomSheet"
 
 module.exports = BottomSheet
