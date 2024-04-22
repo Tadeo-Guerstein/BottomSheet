@@ -32,8 +32,8 @@ const getMenuHeight = () => {
   return DEVICE_HEIGHT / 2.3
 }
 
-const MENU_OFFSET = getMenuOffset()
-const MENU_HEIGHT = getMenuHeight()
+export const SHEET_OFFSET = getMenuOffset()
+export const SHEET_HEIGHT = getMenuHeight()
 
 const BottomSheet = forwardRef(
   (
@@ -49,15 +49,15 @@ const BottomSheet = forwardRef(
     },
     ref
   ) => {
-    const finalValue = useRef(MENU_OFFSET)
+    const finalValue = useRef(SHEET_OFFSET)
 
     useImperativeHandle(
       ref,
       () => {
         return {
           firstPosition: () => {
-            executeAnimationTiming(MENU_OFFSET)
-            finalValue.current = MENU_OFFSET
+            executeAnimationTiming(SHEET_OFFSET)
+            finalValue.current = SHEET_OFFSET
           },
           secondPosition: (validate) => {
             if (finalValue.current === 0 && validate) {
@@ -70,7 +70,7 @@ const BottomSheet = forwardRef(
           },
           close: (validate) => {
             if (finalValue.current === DEVICE_HEIGHT && validate) {
-              executeAnimationTiming(MENU_OFFSET)
+              executeAnimationTiming(SHEET_OFFSET)
               finalValue.current = 0
               return
             }
@@ -108,11 +108,11 @@ const BottomSheet = forwardRef(
       return PanResponder.create({
         onPanResponderMove: (e, gesture) => {
           if (finalValue.current === 0 && gesture.dy < 0) return
-          if (finalValue.current === MENU_OFFSET && gesture.dy > 0) return
-          if (gesture.dy + MENU_OFFSET <= 0) return
+          if (finalValue.current === SHEET_OFFSET && gesture.dy > 0) return
+          if (gesture.dy + SHEET_OFFSET <= 0) return
 
           if (gesture.dy < 0) {
-            animation.setValue(gesture.dy + MENU_OFFSET)
+            animation.setValue(gesture.dy + SHEET_OFFSET)
             return
           }
 
@@ -129,8 +129,8 @@ const BottomSheet = forwardRef(
             finalValue.current = DEVICE_HEIGHT
             return
           }
-          executeAnimationSpring(MENU_OFFSET)
-          finalValue.current = MENU_OFFSET
+          executeAnimationSpring(SHEET_OFFSET)
+          finalValue.current = SHEET_OFFSET
         },
         onMoveShouldSetPanResponder: (e, { dx, dy }) => {
           if (Math.abs(dx) > 10) {
@@ -149,8 +149,8 @@ const BottomSheet = forwardRef(
         return
       }
       if (indexStart === 0) {
-        finalValue.current = MENU_OFFSET
-        executeAnimationSpring(MENU_OFFSET)
+        finalValue.current = SHEET_OFFSET
+        executeAnimationSpring(SHEET_OFFSET)
         return
       }
       finalValue.current = 0
@@ -167,7 +167,7 @@ const BottomSheet = forwardRef(
             style={[
               styles.sheetHandleContainer,
               {
-                bottom: MENU_HEIGHT - 15,
+                bottom: SHEET_HEIGHT - 15,
                 transform: [{ translateY: animation }],
               },
             ]}
@@ -183,7 +183,7 @@ const BottomSheet = forwardRef(
           style={[
             styles.sheetHandle,
             {
-              bottom: MENU_HEIGHT - 15,
+              bottom: SHEET_HEIGHT - 15,
               transform: [{ translateY: animation }],
             },
           ]}
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     borderWidth: 1,
-    height: MENU_HEIGHT,
+    height: SHEET_HEIGHT,
     overflow: "hidden",
     paddingTop: 15,
     paddingVertical: 15,
