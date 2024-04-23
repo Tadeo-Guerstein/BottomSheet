@@ -46,6 +46,7 @@ const BottomSheet = forwardRef(
       style,
       disablePanDownChildren,
       bottomInsets = 0,
+      handleStyle,
     },
     ref
   ) => {
@@ -170,6 +171,7 @@ const BottomSheet = forwardRef(
                 bottom: SHEET_HEIGHT - 15,
                 transform: [{ translateY: animation }],
               },
+              handleStyle,
             ]}
           >
             {handleComponent()}
@@ -186,6 +188,7 @@ const BottomSheet = forwardRef(
               bottom: SHEET_HEIGHT - 15,
               transform: [{ translateY: animation }],
             },
+            handleStyle,
           ]}
         >
           <View style={styles.sheet} />
