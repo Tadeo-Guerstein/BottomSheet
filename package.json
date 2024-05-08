@@ -18,6 +18,6 @@
   "homepage": "https://github.com/Tadeo-Guerstein/BottomSheet#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-native": "^0.73.6"
+    "react-native": "^0.74.1"
   }
 }
